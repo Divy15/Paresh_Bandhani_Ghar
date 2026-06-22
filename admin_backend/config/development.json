@@ -1,0 +1,21 @@
+{
+    "App":{
+        "Config":{
+            "Port":3000
+        },
+        "DB":{
+            "Host":"localhost",
+            "Port":5434,
+            "User":"postgres",
+            "Password":"shree",
+            "Database":"pbg"
+        },
+        "Redis":{
+            "Host":"localhost",
+            "Port":6379
+        },
+        "JWT":{
+            "Secret":"DivyLionking9"
+        }
+    }
+}

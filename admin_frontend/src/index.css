@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  /* Bandhani Themed Palette */
+  --color-brand-maroon-50: #fef2f3;
+  --color-brand-maroon-500: #991b1b; /* Rich Traditional Maroon */
+  --color-brand-maroon-600: #7f1d1d;
+  --color-brand-gold-500: #d97706;   /* Warm Mustard/Gold accent */
+  
+  /* Semantic mappings changing dynamically across themes */
+  --color-bg-main: var(--bg-main);
+  --color-bg-card: var(--bg-card);
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-border-main: var(--border-main);
+}
+
+/* Light Theme Variables */
+:root, [data-theme="light"] {
+  --bg-main: #fcfaf7;       /* Soft warm white / cloth canvas vibe */
+  --bg-card: #ffffff;
+  --text-main: #111827;
+  --text-muted: #4b5563;
+  --border-main: #e5e7eb;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --bg-main: #0f1115;       /* Premium rich obsidian */
+  --bg-card: #161a22;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --border-main: #27272a;
+}
