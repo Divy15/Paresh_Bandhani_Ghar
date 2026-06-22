@@ -27,8 +27,15 @@ export const ProductRegistrationPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
   
   // FIXED: Properties now match the ProductItem interface structure perfectly
-  const createBlankProduct = (): ProductItem => ({
-    id: crypto.randomUUID(),
+  // Replace your current createBlankProduct with this:
+const createBlankProduct = (): ProductItem => {
+  // Check if crypto.randomUUID is available (Secure Contexts / Localhost)
+  const id = typeof crypto !== 'undefined' && crypto.randomUUID 
+    ? crypto.randomUUID() 
+    : Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+  return {
+    id: id,
     files: [],
     name: '',
     material: '',
@@ -37,7 +44,8 @@ export const ProductRegistrationPage: React.FC = () => {
     optionalFields: {}, 
     price: '',
     quantity: '1',
-  });
+  };
+};
 
   const [products, setProducts] = useState<ProductItem[]>([createBlankProduct()]);
   const [apiResponse, setApiResponse] = useState<ApiResponseProduct[]>([]);
