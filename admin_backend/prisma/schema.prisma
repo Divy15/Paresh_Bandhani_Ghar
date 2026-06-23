@@ -66,3 +66,59 @@ model RolePermission {
   @@unique([roleId, permissionId])
   @@map("role_permission")
 }
+
+model Media {
+  id        Int      @id @default(autoincrement())
+  path      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Inverse structural relations for Prisma queries
+  categories    Category[]
+  subcategories SubCategory[]
+
+  @@map("media")
+}
+
+model Category {
+  id           Int      @id @default(autoincrement())
+  imageId      Int?     @map("image_id")
+  categoryName String   @map("category_name")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  // Relationships
+  media         Media?        @relation(fields: [imageId], references: [id], onDelete: SetNull)
+  subcategories SubCategory[]
+
+  @@map("category")
+}
+
+model SubCategory {
+  id              Int      @id @default(autoincrement())
+  categoryId      Int      @map("category_id")
+  imageId         Int?     @map("image_id")
+  subcategoryName String   @map("subcategory_name")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  // Relationships
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  media    Media?   @relation(fields: [imageId], references: [id], onDelete: SetNull)
+
+  @@map("subcategory")
+}
+
+model Material {
+  id           Int      @id @default(autoincrement())
+  materialName String   @map("material_name")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("material")
+}
+
+model ProductStructure {
+  id        Int      @id @default(autoincrement())
+  mainName  String   @map("main_name")
+  includes  Json     // Native Postgres jsonb database column mapping arrays perfectly
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("product_structure")
+}

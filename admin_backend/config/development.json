@@ -16,6 +16,12 @@
         },
         "JWT":{
             "Secret":"DivyLionking9"
+        },
+        "AWS":{
+            "AccessKey":"",
+            "SecretKey":"",
+            "BucketName":"",
+            "Region":""
         }
     }
 }

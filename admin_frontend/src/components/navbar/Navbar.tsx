@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
-import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Sun, Moon, LogOut, LayoutDashboard, Shirt, Receipt, Undo2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Sun, Moon, LogOut, LayoutDashboard, Shirt, Receipt, Undo2, Settings2 } from 'lucide-react';
 
 export const Navbar: React.FC = () => {
   const { isAuthenticated, logout } = useAuth();
@@ -64,6 +64,9 @@ export const Navbar: React.FC = () => {
               <NavLink to="/returns" className={navLinkStyle}>
                 <Undo2 className="w-4 h-4" /> Return Product
               </NavLink>
+              <NavLink to="/configuration" className={navLinkStyle}>
+                <Settings2 className="w-4 h-4" /> Configuration
+              </NavLink>
             </div>
           )}
           
@@ -114,19 +117,23 @@ export const Navbar: React.FC = () => {
           >
             <div className="px-6 py-4 flex flex-col gap-2 bg-bg-card">
               <NavLink to="/dashboard" className={mobileNavLinkStyle} onClick={closeMenu}>
-                <LayoutDashboard className="w-4 h-4 text-brand-maroon-500" /> Dashboard
+                <LayoutDashboard className="w-4 h-4" /> Dashboard
               </NavLink>
 
               <NavLink to="/products" className={mobileNavLinkStyle} onClick={closeMenu}>
-                <Shirt className="w-4 h-4 text-brand-maroon-500" /> Product Registration
+                <Shirt className="w-4 h-4" /> Product Registration
               </NavLink>
 
               <NavLink to="/billing" className={mobileNavLinkStyle} onClick={closeMenu}>
-                <Receipt className="w-4 h-4 text-brand-maroon-500" /> Billing
+                <Receipt className="w-4 h-4" /> Billing
               </NavLink>
 
               <NavLink to="/returns" className={mobileNavLinkStyle} onClick={closeMenu}>
-                <Undo2 className="w-4 h-4 text-brand-maroon-500" /> Return Product
+                <Undo2 className="w-4 h-4" /> Return Product
+              </NavLink>
+
+              <NavLink to="/configuration" className={mobileNavLinkStyle} onClick={closeMenu}>
+                <Settings2 className="w-4 h-4" /> Configuration
               </NavLink>
 
               <hr className="border-border-main my-2" />

@@ -3,6 +3,7 @@ import { useAuth } from './context/AuthContext';
 import { LoginPage } from './pages/login.page';
 import { DashboardPage } from './pages/dashboard.page';
 import { ProductRegistrationPage } from './pages/product';
+import { ConfigurationPage } from './pages/configuration.page'; // Added Import
 import { Navbar } from './components/navbar/Navbar';
 
 function App() {
@@ -11,7 +12,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-bg-main text-text-main flex flex-col">
-        {/* Navbar stays fixed at the top */}
         <Navbar />
         
         <main className="flex-1">
@@ -30,6 +30,10 @@ function App() {
             <Route 
               path="/products" 
               element={isAuthenticated ? <ProductRegistrationPage /> : <Navigate to="/login" replace />} 
+            />
+            <Route 
+              path="/configuration" 
+              element={isAuthenticated ? <ConfigurationPage /> : <Navigate to="/login" replace />} 
             />
             <Route 
               path="/billing" 
